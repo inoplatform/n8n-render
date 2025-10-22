@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: n8n-service
+    env: docker
+    plan: free
+    image:
+      url: docker.io/n8nio/n8n:latest
+    # optional health check
+    healthCheckPath: /
+    envVars:
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_POSTGRES_HOST
+        value: <your-db-host>
+      - key: DB_POSTGRES_PORT
+        value: <your-db-port>
+      - key: DB_POSTGRES_DB
+        value: <your-db-name>
+      - key: DB_POSTGRES_USER
+        value: <your-db-user>
+      - key: DB_POSTGRES_PASSWORD
+        value: <your-db-password>
+      - key: DB_POSTGRES_SCHEMA
+        value: public
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: yourStrongPassword
